@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sp500-historical-prices"
+version = "0.1.0"
+description = "Download current S&P 500 constituents and their historical adjusted close prices with yfinance."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "beautifulsoup4>=4.12",
+    "html5lib>=1.1",
+    "lxml>=5.0",
+    "pandas>=2.2,<3.1",
+    "requests>=2.31,<3",
+    "yfinance>=0.2.54,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+download-sp500-prices = "sp500_historical_prices.downloader:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
